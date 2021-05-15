@@ -13,6 +13,7 @@ app.models = sequelize.sequelize.models;
 consign()
     .include("services")
     .then("controllers")
+    .then("filters")
     .then("routes")
     .into(app);
 

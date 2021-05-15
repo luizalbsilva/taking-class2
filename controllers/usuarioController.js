@@ -10,6 +10,7 @@ module.exports = (app) => {
                 res.statusCode = 204;
             }
             res.send(usuario);
+            return;
         },
         async create(req, res) {
             let criado = await usuarioService.create(req.body);
