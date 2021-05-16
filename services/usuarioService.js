@@ -1,7 +1,10 @@
+const {createHash4Pass} = require("../helpers/SecurityHelper");
+
 module.exports = (app) => {
     const Usuario = app.models.usuario;
     return {
         async create(usuario) {
+            usuario.password = createHash4Pass(usuario.password);
             return await Usuario.build(usuario).save();
         },
         async get(id) {
@@ -11,9 +14,13 @@ module.exports = (app) => {
             return await Usuario.findAll();
         },
         async update(id, usuario) {
-            let usuarioBanco = await Usuario.findByPk(id);
+            const usuarioBanco = await Usuario.findByPk(id);
 
-            await usuarioBanco.setAttributes(usuario);
+            if (typeof usuario.password === "string") {
+                usuario.password = await createHash4Pass(usuario.password);
+            }
+            usuarioBanco.setAttributes(usuario);
+            return await usuarioBanco.save();
         },
         async delete(id) {
             return await Usuario.delete(id);
