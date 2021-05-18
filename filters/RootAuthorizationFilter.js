@@ -4,7 +4,6 @@ module.exports = (app) => {
         const jwt = extractToken( req.headers );
         try {
             decoded = validateAndDecodeJwt(jwt);
-            console.log(decoded);
             if (decoded.sub < 0) {
                 next();
                 return;

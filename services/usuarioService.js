@@ -1,7 +1,7 @@
 const {createHash4Pass} = require("../helpers/SecurityHelper");
 
 module.exports = (app) => {
-    const Usuario = app.models.usuario;
+    const {Usuario} = app.models;
     return {
         async create(usuario) {
             usuario.password = createHash4Pass(usuario.password);
