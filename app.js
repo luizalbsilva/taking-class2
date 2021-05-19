@@ -2,10 +2,11 @@ const express = require("express");
 const consign = require("consign");
 const sequelize = require("./models/index");
 const bodyParser = require("body-parser");
-
+const methodOverride = require("method-override");
 const app = express();
 
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 
 app.sequelizeObj = sequelize;
 app.models = sequelize.sequelize.models;

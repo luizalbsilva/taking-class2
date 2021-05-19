@@ -27,6 +27,12 @@ module.exports = {
       filename: {
         type: Sequelize.STRING
       },
+      mediatype: {
+        type: Sequelize.STRING
+      },
+      filelocation: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

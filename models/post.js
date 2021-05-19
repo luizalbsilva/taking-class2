@@ -19,7 +19,9 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     genre: DataTypes.STRING,
-    filename: DataTypes.STRING
+    filename: DataTypes.STRING,
+    filelocation: DataTypes.STRING,
+    mediatype: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Post',
