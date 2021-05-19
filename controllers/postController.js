@@ -21,10 +21,13 @@ module.exports = (app) => {
         },
 
         async create(req, res) {
-            const payload = req.body;
+            const payload = JSON.parse(req.body.payload);
+            payload.file = req.file.filename;
+
             let post = await postService.create(req.params.id_usuario, payload);
             res.statusCode = 201;
             res.set("location", `/usuario/${post.usuarioId}/post/${post.id}`)
+
             res.send();
         },
 
