@@ -34,7 +34,6 @@ module.exports = (app) => {
         },
 
         async update(req, res) {
-            console.log(req.file);
             const payload = JSON.parse(req.body.payload);
             payload.filename = req.file.originalname;
             payload.storage = req.file.filename;

@@ -1,3 +1,5 @@
+const {moveDados, pastaPosts, PASTA_TEMP_POSTS} = require("../utils/FileTransferUtils");
+
 const fs = require("fs");
 const fsPromises = fs.promises;
 module.exports = (app) => {
@@ -30,34 +32,11 @@ module.exports = (app) => {
         async create(usuarioId, body) {
             let post = Post.build(body);
             post.usuarioId = usuarioId;
-            post.filelocation = `./media/${usuarioId}/${body.storage}`;
+            const destino = `${pastaPosts(usuarioId)}/${body.storage}`;
+            post.filelocation = destino;
+            await moveDados(`${PASTA_TEMP_POSTS}/${body.storage}`, destino );
             post = await post.save();
-            await this.preparaPastas(usuarioId);
-            console.log(`Movendo ./uploads/${body.storage}`)
-            await fsPromises.rename(`./uploads/${body.storage}`,`./media/${usuarioId}/${body.storage}`, )
             return post;
-        },
-
-        async preparaPastas(usuarioId) {
-            console.log('Gravou Post');
-            try {
-                if(! (await fsPromises.stat(`./media`))?.isDirectory()) {
-                    console.log('Criando pasta media');
-                    await fsPromises.mkdir('./media');
-                }
-            } catch (e) {
-                console.log('Criando pasta media');
-                await fsPromises.mkdir('./media');
-            }
-            try {
-                if((await fsPromises.stat(`./media/${usuarioId}`))?.isDirectory()) {
-                    console.log('Criando pasta media/user');
-                    await fsPromises.mkdir(`./media/${usuarioId}`);
-                }
-            } catch(e) {
-                console.log('Criando pasta media/user');
-                await fsPromises.mkdir(`./media/${usuarioId}`);
-            }
         },
 
         async update(usuarioId, id, body) {
@@ -70,10 +49,11 @@ module.exports = (app) => {
                 await fsPromises.rm(`uploads/${post.filename}`);
             }
             if (typeof post ==="object" ) {
+                const antigo = post.filelocation;
                 post.setAttributes(body);
+                await moveDados(`./uploads/${body.storage}`, `./media/${usuarioId}/${body.storage}`);
                 post = await post.save();
-                await this.preparaPastas(usuarioId);
-                await fsPromises.rename(`./uploads/${body.storage}`,`./media/${usuarioId}/${body.storage}`, )
+                await fsPromises.rm(antigo);
                 return post;
             }
         }
