@@ -24,10 +24,10 @@ module.exports = (app) => {
             res.send();
         },
 
-        update(req, res) {
+        async update(req, res) {
             const payload = JSON.parse(req.body.payload);
 
-            res.send(produtoService.update(req.params.id, payload, req.file));
+            res.send(await produtoService.update(req.params.id, payload, req.file));
         },
 
         delete(req, res) {
