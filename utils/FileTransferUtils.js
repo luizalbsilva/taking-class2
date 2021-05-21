@@ -17,7 +17,7 @@ async function moveDados(origem, destino) {
 };
 
 function pastaPosts(idUsuario) {
-    return `${PASTA_PRODUTOS}/${idUsuario}`;
+    return `${PASTA_POSTS}/${idUsuario}`;
 }
 
 module.exports = {

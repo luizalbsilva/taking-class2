@@ -1,4 +1,4 @@
-const {createHash4Pass} = require("../helpers/SecurityHelper");
+const {createHash4Pass} = require("../utils/SecurityHelper");
 
 module.exports = (app) => {
     const {Usuario} = app.models;

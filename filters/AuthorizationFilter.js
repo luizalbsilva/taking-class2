@@ -1,4 +1,4 @@
-const {extractToken, validateAndDecodeJwt} = require("../helpers/SecurityHelper");
+const {extractToken, validateAndDecodeJwt} = require("../utils/SecurityHelper");
 module.exports = (app) => {
     return (req, res, next) => {
         const jwt = extractToken( req.headers );

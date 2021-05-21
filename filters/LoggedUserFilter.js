@@ -1,4 +1,4 @@
-const{criaNovaSessao, usuarioAdministrador, createHash4Pass, extractToken, validateAndDecodeJwt} = require("../helpers/SecurityHelper");
+const{criaNovaSessao, usuarioAdministrador, createHash4Pass, extractToken, validateAndDecodeJwt} = require("../utils/SecurityHelper");
 
 module.exports = (app) => {
     return (req, res, next) => {

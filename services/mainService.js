@@ -1,4 +1,4 @@
-const {createHash4Pass, criaNovaSessao, usuarioAdministrador} = require("../helpers/SecurityHelper");
+const {createHash4Pass, criaNovaSessao, usuarioAdministrador} = require("../utils/SecurityHelper");
 
 const logons = [];
 
