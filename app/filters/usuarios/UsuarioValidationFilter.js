@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = (express) => {
     return (req, res, next) => {
         const usuario = req.body;
         if (   typeof usuario === "object"

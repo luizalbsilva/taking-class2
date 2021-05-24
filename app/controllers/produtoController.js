@@ -1,6 +1,6 @@
-module.exports = (app) => {
-    const {produtoService} = app.services;
-    const {Produto} = app.models;
+module.exports = (express) => {
+    const {produtoService} = express.app.services;
+    const {Produto} = express.app.models;
     return {
         async index(req, res) {
             res.send(await produtoService.findAll());

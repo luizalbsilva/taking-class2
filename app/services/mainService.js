@@ -2,8 +2,8 @@ const {createHash4Pass, criaNovaSessao, usuarioAdministrador} = require("../util
 
 const logons = [];
 
-module.exports = (app) => {
-    const Usuario = app.models.usuario;
+module.exports = (express) => {
+    const Usuario = express.app.models.usuario;
     return {
         hello() {
             return "Bonjour, Takers !!!"

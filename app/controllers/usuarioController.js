@@ -1,5 +1,5 @@
-module.exports = (app) => {
-    const {usuarioService} = app.services;
+module.exports = (express) => {
+    const {usuarioService} = express.app.services;
     return {
         async index(req, res) {
             res.send( await usuarioService.listAll());

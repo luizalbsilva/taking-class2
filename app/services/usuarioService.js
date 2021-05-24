@@ -1,7 +1,7 @@
 const {createHash4Pass} = require("../utils/SecurityHelper");
 
-module.exports = (app) => {
-    const {Usuario} = app.models;
+module.exports = (express) => {
+    const {Usuario} = express.app.models;
     return {
         async create(usuario) {
             usuario.password = createHash4Pass(usuario.password);

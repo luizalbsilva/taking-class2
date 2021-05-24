@@ -1,5 +1,5 @@
-module.exports = (app) => {
-    const {postService} = app.services;
+module.exports = (express) => {
+    const {postService} = express.app.services;
     return {
         async index(req, res) {
             res.send(await postService.listAllForUser(req.params.id_usuario));

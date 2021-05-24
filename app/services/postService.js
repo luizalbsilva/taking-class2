@@ -2,8 +2,8 @@ const {moveDados, pastaPosts, PASTA_TEMP_POSTS} = require("../utils/FileTransfer
 
 const fs = require("fs");
 const fsPromises = fs.promises;
-module.exports = (app) => {
-    const {Post} = app.models;
+module.exports = (express) => {
+    const {Post} = express.app.models;
     return {
         async listAllForUser(id_usuario) {
             return await Post.findAll({

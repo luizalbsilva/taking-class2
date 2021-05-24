@@ -1,5 +1,5 @@
-module.exports = (app) => {
-    const {mainService} = app.services;
+module.exports = (express) => {
+    const {mainService} = express.app.services;
 
     return {
         index(req, res) {

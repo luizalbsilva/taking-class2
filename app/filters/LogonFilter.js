@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = (express) => {
     return (req, res, next) => {
         const {user, pass} = req.body;
         if (typeof user === "string" && typeof pass === "string") {

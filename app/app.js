@@ -9,13 +9,15 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 app.sequelizeObj = sequelize;
-app.models = sequelize.sequelize.models;
+app.app = {
+    models: sequelize.sequelize.models
+}
 
 consign()
-    .include("services")
-    .then("controllers")
-    .then("filters")
-    .then("routes")
+    .include("app/services")
+    .then("app/controllers")
+    .then("app/filters")
+    .then("app/routes")
     .into(app);
 
 

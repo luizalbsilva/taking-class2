@@ -1,6 +1,6 @@
 const{criaNovaSessao, usuarioAdministrador, createHash4Pass, extractToken, validateAndDecodeJwt} = require("../utils/SecurityHelper");
 
-module.exports = (app) => {
+module.exports = (express) => {
     return (req, res, next) => {
         const jwt = extractToken(req.headers);
 

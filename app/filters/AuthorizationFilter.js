@@ -1,10 +1,10 @@
 const {extractToken, validateAndDecodeJwt} = require("../utils/SecurityHelper");
-module.exports = (app) => {
+module.exports = (express) => {
     return (req, res, next) => {
         const jwt = extractToken( req.headers );
         try {
-            decoded = validateAndDecodeJwt(jwt);
-            if (decoded.sub < 0) {
+            const decoded = validateAndDecodeJwt(jwt);
+            if (decoded.sub < 0 || decoded.sub === +req.params.id) {
                 next();
                 return;
             }

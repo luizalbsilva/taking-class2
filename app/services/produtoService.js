@@ -1,8 +1,8 @@
 const {PASTA_TEMP_PRODUTOS, PASTA_PRODUTOS, moveDados} = require("../utils/FileTransferUtils");
 const fsPromise = require("fs").promises;
 
-module.exports = (app) => {
-    const {Produto} = app.models;
+module.exports = (express) => {
+    const {Produto} = express.app.models;
 
     return {
         async findAll() {

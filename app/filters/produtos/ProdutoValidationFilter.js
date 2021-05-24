@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = (express) => {
     return (req, res, next) => {
         const payload = JSON.parse(req.body.payload);
         if (
