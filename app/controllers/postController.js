@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 module.exports = (express) => {
     const {postService} = express.app.services;
     return {
@@ -29,7 +31,6 @@ module.exports = (express) => {
             let post = await postService.create(req.params.id_usuario, payload);
             res.statusCode = 201;
             res.set("location", `/usuario/${post.usuarioId}/post/${post.id}`)
-
             res.send();
         },
 
@@ -43,6 +44,13 @@ module.exports = (express) => {
                 res.statusCode = 410;
             }
             res.send();
+        },
+
+        async getMedia(req, res) {
+            const post = await postService.get(req.params.id_usuario, req.params.id);
+            res.writeHead(200, {"Content-Type": post.mediatype});
+            fs.createReadStream(post.filelocation)
+                .pipe(res)
         }
     }
 }

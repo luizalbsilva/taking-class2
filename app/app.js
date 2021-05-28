@@ -3,8 +3,10 @@ const consign = require("consign");
 const sequelize = require("./models/index");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
+const corsFilter = require("./filters/corsFilter");
 const app = express();
 
+app.use(corsFilter);
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 

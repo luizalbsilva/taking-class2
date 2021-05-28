@@ -35,9 +35,4 @@ module.exports = (express) => {
         }
 
     }
-    app.get("/produtos", produtoService.index);
-    app.get("/produto/:id", produtoService.get);
-    app.post("/produto", produtoService.create);
-    app.put("/produto/:id", produtoService.update);
-    app.delete("/produto/:id", produtoService.delete);
 };
