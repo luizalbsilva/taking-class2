@@ -1,5 +1,7 @@
 const multer = require("multer");
-const upload = multer({dest: "./uploads"});
+const temporaryPath = require("../../config/path.json").produtos.temp;
+const upload = multer({dest: temporaryPath});
+
 module.exports = (express) => {
     const {produtoController} = express.app.controllers;
     const {ProdutoValidationFilter} = express.app.filters.produtos;

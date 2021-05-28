@@ -1,5 +1,6 @@
 const multer = require("multer");
-const uploader = multer({dest:'./uploads'})
+const temporaryPath = require("../../config/path.json").media.temp;
+const uploader = multer({dest: temporaryPath})
 
 module.exports = (express) => {
     const {postController} = express.app.controllers;

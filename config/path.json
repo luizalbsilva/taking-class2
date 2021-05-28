@@ -1,0 +1,10 @@
+{
+  "produtos": {
+    "temp": "./tmp/uploads",
+    "final": "./tmp/imgs/produtos"
+  },
+  "media": {
+    "temp": "./tmp/uploads",
+    "final": "./tmp/media"
+  }
+}
