@@ -6,8 +6,8 @@ const methodOverride = require("method-override");
 const corsFilter = require("./filters/corsFilter");
 const app = express();
 
-app.use(corsFilter);
 app.use(bodyParser.json());
+app.use(corsFilter(app));
 app.use(methodOverride('_method'));
 
 app.sequelizeObj = sequelize;
@@ -22,5 +22,6 @@ consign()
     .then("app/routes")
     .into(app);
 
+const port = 4000;
 
-app.listen(3000, () => console.log('Rodando na 3000'));
+app.listen(port, () => console.log(`Rodando na ${port}`));

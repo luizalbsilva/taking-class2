@@ -7,6 +7,7 @@ module.exports = (express) => {
         },
 
         async logon(req, res) {
+            console.log("Logon req")
             let jwt = await mainService.logon(req.body.user, req.body.pass);
             if (jwt == null) {
                 res.statusCode = 401;
