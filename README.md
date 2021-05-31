@@ -1,6 +1,8 @@
 Treinamento de NodeJs e ReactJs - Taking Consultoria
 ====================================================
 
+**ESTE É O BACKEND DO PROJETO** Frontend encontra-se em: https://github.com/luizalbsilva/taking-class2-front
+
 Treinamento interno da Taking Consultoria visando o aprimoramento técnico de seus consultores, a fim de preparã-los para 
 futuras demandas no cliente.
 
